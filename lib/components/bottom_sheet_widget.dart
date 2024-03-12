@@ -2,6 +2,8 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'bottom_sheet_model.dart';
 export 'bottom_sheet_model.dart';
 
@@ -47,7 +49,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
         color: FlutterFlowTheme.of(context).secondaryBackground,
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 24.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 24.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,9 +57,9 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
             Container(
               width: double.infinity,
               height: 60.0,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
+                padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -69,7 +71,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(
                           Icons.add_location,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -80,7 +82,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,7 +104,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
             ),
             Expanded(
               child: Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -116,7 +118,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           'Close',
                           textAlign: TextAlign.center,

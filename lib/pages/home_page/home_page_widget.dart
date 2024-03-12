@@ -6,8 +6,13 @@ import '/flutter_flow/flutter_flow_place_picker.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/place.dart';
+import 'dart:io';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
@@ -48,34 +53,39 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       resizeToAvoidBottomInset: false,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: Align(
-        alignment: const AlignmentDirectional(0.0, 0.0),
+        alignment: AlignmentDirectional(0.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Container(
               width: 100.0,
               height: 100.0,
+              constraints: BoxConstraints(
+                minWidth: 300.0,
+                minHeight: 600.0,
+              ),
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
-              child: const SizedBox(
-                width: 100.0,
-                height: 100.0,
-                child: custom_widgets.NewCustomWidget(
-                  width: 100.0,
-                  height: 100.0,
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: custom_widgets.Googlemap(
+                  width: double.infinity,
+                  height: double.infinity,
                 ),
               ),
             ),
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                if (_model.placePickerValue.name != '')
+                if (_model.placePickerValue.name != null &&
+                    _model.placePickerValue.name != '')
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                      child: SizedBox(
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                      child: Container(
                         width: 50.0,
                         child: TextFormField(
                           controller: _model.textController,
@@ -122,9 +132,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                     ),
                   ),
-                if (_model.placePickerValue.name != '')
+                if (_model.placePickerValue.name != null &&
+                    _model.placePickerValue.name != '')
                   FFButtonWidget(
-                    onPressed: (_model.textController.text == '')
+                    onPressed: (_model.textController.text == null ||
+                            _model.textController.text == '')
                         ? null
                         : () async {
                             await LocationRecord.collection
@@ -138,9 +150,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     options: FFButtonOptions(
                       height: 40.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
@@ -148,7 +160,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 color: Colors.white,
                               ),
                       elevation: 3.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),
@@ -187,7 +199,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           color: FlutterFlowTheme.of(context).info,
                         ),
                     elevation: 2.0,
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
@@ -237,7 +249,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   List<LocationRecord> googleMapLocationRecordList =
                       snapshot.data!;
                   return FlutterFlowGoogleMap(
-                    key: const ValueKey('test'),
+                    key: ValueKey('test'),
                     controller: _model.googleMapsController,
                     onCameraIdle: (latLng) =>
                         setState(() => _model.googleMapsCenter = latLng),
